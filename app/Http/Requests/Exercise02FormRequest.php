@@ -21,7 +21,6 @@ class Exercise02FormRequest extends FormRequest
             'old_password'=> [
                 'required',
                 'string',
-                // * Current password must be correct
                 'current_password'
             ],
             'password' => [

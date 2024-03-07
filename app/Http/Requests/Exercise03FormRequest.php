@@ -17,6 +17,29 @@ class Exercise03FormRequest extends FormRequest
 {
     public function rules(): array
     {
-        return [];
+        return [
+            'name' => [
+                'required',
+                'string',
+                'max:64',
+                'unique:seasons',
+            ],
+            'number_scores' => [
+                'required',
+                'int',
+                'between:1,65535',
+            ],
+            'start_date' => [
+                'required',
+                'string',
+                'date_format:Y-m-d',
+            ],
+            'end_date' => [
+                'required',
+                'string',
+                'date_format:Y-m-d',
+                'after:start_date',
+            ],
+        ];
     }
 }
