@@ -17,6 +17,19 @@ class Exercise02FormRequest extends FormRequest
 {
     public function rules(): array
     {
-        return [];
+        return [
+            'old_password'=> [
+                'required',
+                'string',
+                // * Current password must be correct
+                'current_password'
+            ],
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'confirmed',
+            ],
+        ];
     }
 }
