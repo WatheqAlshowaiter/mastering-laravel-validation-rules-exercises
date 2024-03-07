@@ -17,6 +17,19 @@ class Exercise04FormRequest extends FormRequest
 {
     public function rules(): array
     {
-        return [];
+        return [
+            'pencils' => [
+                'boolean',
+                'required_without_all:pads,game_sheets'
+            ],
+            'pads' => [
+                'boolean',
+                'required_without_all:pencils,game_sheets'
+            ],
+            'game_sheets' => [
+                'boolean',
+                'required_without_all:pads,pencils'
+            ],
+        ];
     }
 }
