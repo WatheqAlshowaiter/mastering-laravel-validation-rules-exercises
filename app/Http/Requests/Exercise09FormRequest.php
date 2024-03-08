@@ -17,6 +17,41 @@ class Exercise09FormRequest extends FormRequest
 {
     public function rules(): array
     {
-        return [];
+        return [
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            'players'=>[
+                'required',
+                'array',
+            ],
+            'players.*.first_name'=>[
+                'required',
+                'string',
+                'max:255',
+            ],
+            'players.*.last_name'=>[
+                'required',
+                'string',
+                'max:255',
+            ],
+            'players.*.email'=>[
+                'required',
+                'string',
+                'email',
+                'max:255',
+            ],
+            'players.0.phone' => [
+                'required',
+            ],
+            'players.*.phone'=>[
+                'nullable',
+                'string',
+                'max:255',
+                'regex:/^\d{3}-\d{3}-\d{4}$/'
+            ],
+        ];
     }
 }
